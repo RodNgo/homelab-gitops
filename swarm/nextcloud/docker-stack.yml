@@ -4,11 +4,14 @@ services:
   mariadb:
     image: mariadb:10.11
     environment:
-      MYSQL_ROOT_PASSWORD: 1CmOftOsxv4VPW7A7Os3
       MYSQL_DATABASE: nextcloud
       MYSQL_USER: nextcloud
-      MYSQL_PASSWORD: 1CmOftOsxv4VPW7A7Os3
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/nextcloud_db_root_password
+      MYSQL_PASSWORD_FILE: /run/secrets/nextcloud_db_user_password
       TZ: Asia/Ho_Chi_Minh
+    secrets:
+      - nextcloud_db_root_password
+      - nextcloud_db_user_password
     volumes:
       - /mnt/storage/nextcloud/db:/var/lib/mysql
     deploy:
@@ -27,8 +30,10 @@ services:
       MYSQL_HOST: mariadb
       MYSQL_DATABASE: nextcloud
       MYSQL_USER: nextcloud
-      MYSQL_PASSWORD: 1CmOftOsxv4VPW7A7Os3
+      MYSQL_PASSWORD_FILE: /run/secrets/nextcloud_db_user_password
       TZ: Asia/Ho_Chi_Minh
+    secrets:
+      - nextcloud_db_user_password
     volumes:
       - /mnt/storage/nextcloud/app:/var/www/html
       - /mnt/storage/nextcloud/data:/var/www/html/data
@@ -37,3 +42,9 @@ services:
       placement:
         constraints:
           - node.hostname == rodngo2003-HP-ProDesk-600-G3-DM
+
+secrets:
+  nextcloud_db_root_password:
+    external: true
+  nextcloud_db_user_password:
+    external: true
