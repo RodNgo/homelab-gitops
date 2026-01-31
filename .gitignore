@@ -1,0 +1,14 @@
+# secrets plaintext
+secrets.yaml
+*.dec.yaml
+*.plaintext.yaml
+
+# sops temp
+*.agekey
+
+# editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store

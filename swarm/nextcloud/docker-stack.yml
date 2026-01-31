@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  mariadb:
+    image: mariadb:10.11
+    environment:
+      MYSQL_ROOT_PASSWORD: 1CmOftOsxv4VPW7A7Os3
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: 1CmOftOsxv4VPW7A7Os3
+      TZ: Asia/Ho_Chi_Minh
+    volumes:
+      - /mnt/storage/nextcloud/db:/var/lib/mysql
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == rodngo2003-HP-ProDesk-600-G3-DM
+
+  nextcloud:
+    image: nextcloud:29-apache
+    ports:
+      - target: 80
+        published: 8088
+        mode: host
+    environment:
+      MYSQL_HOST: mariadb
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: 1CmOftOsxv4VPW7A7Os3
+      TZ: Asia/Ho_Chi_Minh
+    volumes:
+      - /mnt/storage/nextcloud/app:/var/www/html
+      - /mnt/storage/nextcloud/data:/var/www/html/data
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == rodngo2003-HP-ProDesk-600-G3-DM
