@@ -12,7 +12,7 @@ services:
       BESZEL_LOG_LEVEL: debug
 
     volumes:
-      - beszel-data:/data
+      - /home/homelab-gitops/swarm/beszel-hub/beszel-data:/data
 
     deploy:
       replicas: 1
