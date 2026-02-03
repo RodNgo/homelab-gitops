@@ -22,5 +22,5 @@ services:
       restart_policy:
         condition: on-failure
 
-volumes:
-  beszel-data:
+# volumes:
+#   beszel-data:
