@@ -12,3 +12,6 @@ secrets.yaml
 
 # OS
 .DS_Store
+
+# Portainer data volume
+swarm/portainer/portainer_data/  
