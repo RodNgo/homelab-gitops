@@ -15,3 +15,5 @@ secrets.yaml
 
 # Portainer data volume
 swarm/portainer/portainer_data/  
+
+.sops.yaml
