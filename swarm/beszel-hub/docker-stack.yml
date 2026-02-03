@@ -12,7 +12,7 @@ services:
       BESZEL_LOG_LEVEL: debug
 
     volumes:
-      - /home/homelab-gitops/swarm/beszel-hub/beszel-data:/data
+      - beszel-data:/data
 
     deploy:
       replicas: 1
@@ -22,5 +22,5 @@ services:
       restart_policy:
         condition: on-failure
 
-# volumes:
-#   beszel-data:
+volumes:
+  beszel-data:
