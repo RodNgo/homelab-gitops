@@ -1,4 +1,0 @@
-creation_rules:
-  - path_regex: ^swarm/nextcloud/secrets\.yaml$
-    encrypted_regex: '^(.*)$'
-    age: age1hgvthr6lgqdfppclc32cl8y4wlm2guxghthyu37ke6xhzxxwg50qtzdm5r
