@@ -4,7 +4,7 @@ services:
   speedtest:
     image: openspeedtest/latest
     ports:
-      - "3000:3000"
+      - "6000:3000"
     deploy:
       mode: global
       restart_policy:
